@@ -25,17 +25,17 @@ $(document).ready(function() {
 		$('#photo').attr("src", srcOfPhoto);
 		$('#gender').text('Gender: '+person.demographics.gender);
 		$('#location').text('Location: '+person.demographics.locationGeneral)
-
+		$('#website').text('Website: '+person.contactInfo.websites[0].url)
 
 		for (var i = 0; i < person.organizations.length; i++) {
 			if (person.organizations[i].current === true) {
 				var currentRoleTitle = person.organizations[i].title;
 				var currentRoleCompany = person.organizations[i].name;
 			}
-		}
+		}		
 
 		$('#currentJob').text('Current Role: '+currentRoleTitle+" at "+currentRoleCompany)
-		$('#website').text('Website: '+person.contactInfo.websites[0].url)
+
 	
 	}
 	
