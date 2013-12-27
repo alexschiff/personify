@@ -82,21 +82,40 @@ $(document).ready(function() {
 
 			if (person.hasOwnProperty('socialProfiles') === true) {
 			
+
+				if (person.socialProfiles.hasOwnProperty('Twitter') === false) {
+					$('#Twitter').css('display', 'none')
+				}
+
+				if (person.socialProfiles.hasOwnProperty('Facebook') === false) {
+					$('#Facebook').css('display', 'none')
+				}
+
+				if (person.socialProfiles.hasOwnProperty('LinkedIn') === false) {
+					$('#LinkedIn').css('display', 'none')
+				}
+
+
+
 				for (var i = 0; i < person.socialProfiles.length; i++) {
+
 					if (person.socialProfiles[i].typeName === "Twitter") {
 						var Twitter = person.socialProfiles[i].url;
-						$('#summaryContainer').append('<a href="'+Twitter+'"><img class="socialButton" id="Twitter" src="http://www.vjbooks.com/v/vspfiles/assets/images/official%20twitter%20button%20-%20300.png"/></a>')
-
+						$('#Twitter').css('display', 'inline-block')
+						$('#Twitter').wrap('<a href="'+Twitter+'"></a>')
 					}
+					
 					if (person.socialProfiles[i].typeName === "Facebook") {
 						var Facebook = person.socialProfiles[i].url;
-						$('#summaryContainer').append('<a href="'+Facebook+'"><img class="socialButton" id="Facebook" src="http://web.mit.edu/misti/images/Facebook%20Button.png"/></a>')
-					}
-					if (person.socialProfiles[i].typeName === "LinkedIn") {
-						var LinkedIn = person.socialProfiles[i].url;
-						$('#summaryContainer').append('<a href="'+LinkedIn+'"><img class="socialButton" id="LinkedIn" src="http://www.ldcgasforums.com/Assets/Image/Linkedin_Button(1).jpg"/></a>')
+						$('#Facebook').css('display', 'inline-block')
+						$('#Facebook').wrap('<a href="'+Facebook+'"></a>')
 					}
 
+					if (person.socialProfiles[i].typeName === "LinkedIn") {
+						var LinkedIn = person.socialProfiles[i].url;
+						$('#LinkedIn').css('display', 'inline-block')
+						$('#LinkedIn').wrap('<a href="'+LinkedIn+'"></a>')
+					}
 				}
 			}	
 
