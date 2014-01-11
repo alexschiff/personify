@@ -5,27 +5,33 @@ $(document).ready(function() {
 	
 
 	$.fullcontact.emailLookup('fdd4a159a9943b57', email, function(obj) {
-		console.log(obj);
+		console.log(JSON.stringify(obj, null, 2));
 		
 		if (obj.status == 200) {
 
-			var person = obj
-
 			console.log("Identity found!")
+
+			var person = obj
 
 			if (person.hasOwnProperty('contactInfo') === false) {
 				alert("Email exists, but no information found.")
 			}
 
 			$('#fullNameHeader').text('Found '+person.contactInfo.fullName+' with '+person.likelihood+' likelihood!')
-			console.log(person.contactInfo.fullName)
+
+			if (person.hasOwnProperty('photos') === true) {
 
 			var srcOfPhoto = person.photos[0].url
-			console.log(srcOfPhoto)
 
 			$('#photo').attr("src", srcOfPhoto);
 
-			
+			}
+
+			else {
+				var srcOfPhoto = "http://upload.wikimedia.org/wikipedia/en/f/f5/Question_mark.PNG"
+				$('#photo').attr("src", srcOfPhoto);	
+			}
+
 			if (person.hasOwnProperty('demographics') === true) {
 
 				if (person.demographics.hasOwnProperty('gender') === true) {
@@ -120,13 +126,9 @@ $(document).ready(function() {
 
 		}
 
-
-
-
 		if (obj.status === 202) {
 			alert('Never seen that email before! Try again in 5 minutes after we search the interwebs.')
 		}
-
 
 	});
 	
@@ -137,23 +139,21 @@ $(document).ready(function() {
 	
 
 	$.fullcontact.twitterLookup('fdd4a159a9943b57', twitterHandle, function(obj) {
-		console.log(obj);
+		console.log(JSON.stringify(obj, null, 2));
 		
 		if (obj.status == 200) {
 
-			var person = obj
-
 			console.log("Identity found!")
+
+			var person = obj
 
 			if (person.hasOwnProperty('contactInfo') === false) {
 				alert("Twitter handle exists, but no information found.")
 			}
 
 			$('#fullNameHeader').text('Found '+person.contactInfo.fullName+' with '+person.likelihood+' likelihood!')
-			console.log(person.contactInfo.fullName)
 
 			var srcOfPhoto = person.photos[0].url
-			console.log(srcOfPhoto)
 
 			$('#photo').attr("src", srcOfPhoto);
 
@@ -251,9 +251,6 @@ $(document).ready(function() {
 			}	
 
 		}
-
-
-
 
 		if (obj.status === 202) {
 			alert('Never seen that one before! Try again in 5 minutes after we search the interwebs.')
@@ -265,6 +262,3 @@ $(document).ready(function() {
 	});
 
 });
-
-
-// Need to do error-handling for when a property doesn't exist.
