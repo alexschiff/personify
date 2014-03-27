@@ -38,14 +38,14 @@ $(document).ready(function() {
 				top = correctAttempts[i];
 			}
 		}
-		console.log(top);
-		var topEmail = top.email;
-		
-			});
+		console.log("The most likely email is " + top.email);
 
+			});
 		});
 
 	});
+
+// So far I can get the most likely email, but it is stuck inside this function. I need to figure out how to make the local variable global. Or something like that? Fuck.
 
 	$('#submitButtonEmail').click(function() {
 		var email = $('#Email').val();
