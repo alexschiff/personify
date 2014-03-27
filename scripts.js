@@ -1,5 +1,52 @@
 $(document).ready(function() {
 	
+	$('#submitButtonGuess').click(function() {
+		var firstName = $('#firstName').val();
+		var lastName = $('#lastName').val();
+		var domain = $('#domain').val();
+
+		var attemptsArray = [firstName+'@'+domain, firstName+'.'+lastName+'@'+domain, firstName[0]+'.'+lastName+'@'+domain, firstName[0]+lastName+'@'+domain, firstName+'_'+lastName+'@'+domain, firstName[0]+'_'+lastName+'@'+domain]
+		console.log(attemptsArray);
+
+		var correctAttempts = [];
+		var totalCorrect  = 0
+
+		attemptsArray.forEach(function(attempt) {
+			$.fullcontact.emailLookup('fdd4a159a9943b57', attempt, function(obj) {
+				console.log('Looking up '+attempt+' ...')
+
+				if (obj.status == 200) {
+					totalCorrect = totalCorrect + 1;
+					var score = obj.likelihood;
+					console.log('Matched with a '+score+' likelihood')
+					var Match = {
+						score: score,
+						email: attempt,
+						id: totalCorrect
+					}
+					correctAttempts.push(Match);
+				}
+
+		console.log(correctAttempts);
+
+		var top = {
+			score: 0
+		};
+
+		for (var i=0; i<correctAttempts.length; i++) {
+			if (correctAttempts[i].score > top.score) {
+				top = correctAttempts[i];
+			}
+		}
+		console.log(top);
+		var topEmail = top.email;
+		
+			});
+
+		});
+
+	});
+
 	$('#submitButtonEmail').click(function() {
 		var email = $('#Email').val();
 	
@@ -122,7 +169,22 @@ $(document).ready(function() {
 						$('#LinkedIn').wrap('<a href="'+LinkedIn+'"></a>')
 					}
 				}
-			}	
+			}
+
+			if (person.hasOwnProperty('digitalFootprint') === true) {
+				
+				if (person.digitalFootprint.hasOwnProperty('scores') === true) {
+
+				$('#Klout').text('Klout Score: '+person.digitalFootprint.scores[0].value);
+
+				}
+
+			else {
+				$('#Klout').text('Klout Score: Undefined')
+			}
+
+			}
+				
 
 		}
 
@@ -194,6 +256,20 @@ $(document).ready(function() {
 				$('#website').text('Website: Undefined');
 			}
 
+			if (person.hasOwnProperty('digitalFootprint') === true) {
+				
+				if (person.digitalFootprint.hasOwnProperty('scores') === true) {
+
+				$('#Klout').text('Klout Score: '+person.digitalFootprint.scores[0].value);
+
+				}
+
+			else {
+				$('#Klout').text('Klout Score: Undefined')
+			}
+
+			}
+
 			
 			if (person.hasOwnProperty('organizations') === true) {
 			
@@ -210,6 +286,7 @@ $(document).ready(function() {
 			else {
 				$('#currentJob').text('Current Role: Undefined')
 			}
+
 
 			if (person.hasOwnProperty('socialProfiles') === true) {
 			
