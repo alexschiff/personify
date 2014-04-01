@@ -28,7 +28,7 @@
 		},
 		executeRequest: function(url, method, dataType, oncomplete, data) {
 			$.ajax(url,{
-                                async:true,
+                                async:false,
 				type: method,
                                 success: function(response){
                                         if(oncomplete) oncomplete(response);
