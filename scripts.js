@@ -182,6 +182,7 @@ $(document).ready(function() {
 
 		if (obj.status === 202) {
 			alert('Never seen that email before! Try again in 5 minutes after we search the interwebs.')
+			$('#fullNameHeader').empty();
 			$('.miniSummary').empty();
 			$('.socialButton').css('display', 'none');
 			$('#photo').removeAttr('src');
@@ -189,6 +190,7 @@ $(document).ready(function() {
 
 		if (obj.status === 422) {
 			alert("Uh oh! Something went wrong. Try again please :)")
+			$('#fullNameHeader').empty();
 			$('.miniSummary').empty();
 			$('.socialButton').css('display', 'none');
 			$('#photo').removeAttr('src');
