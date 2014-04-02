@@ -14,6 +14,7 @@ $(document).ready(function() {
 		attemptsArray.forEach(function(attempt) {
 			$.fullcontact.emailLookup('fdd4a159a9943b57', attempt, function(obj) {
 				attemptsMade++;
+				console.log(attemptsMade);
 				
 				if (obj.status === 200) {
 					var Match = {
@@ -26,7 +27,7 @@ $(document).ready(function() {
 		});
 
 		if (attemptsMade === attemptsArray.length) {
-
+			console.log(correctAttempts);
 			var top = {
 				score: 0
 			};

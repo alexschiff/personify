@@ -55,11 +55,17 @@
 
 .miniSummary {
 	margin-left: 30px;
-	margin-top: 30pxs;
+	margin-top: 30px;
 }
 
 #twitterHandleDiv {
 	display: inline-block;
+}
+
+#paypalbutton {
+	display: inline-block;
+	position: relative;
+	margin-top: 100px;
 }
 
 .socialButton {
@@ -92,8 +98,23 @@
 	<input type="submit" value="Submit" id="submitButtonGuess">
 </div>
 
+<form id="paypalbutton" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<table>
+<tr><td><input type="hidden" name="on0" value="Options">Was this website helpful? Let me know with a donation.</td></tr><tr><td><select name="os0">
+	<option value="I appreciate your useful tool!">I appreciate your useful tool! $0.99 USD</option>
+	<option value="I exploit the fruits of your labor.">I exploit the fruits of your labor. $0.00 USD</option>
+	<option value="If your website was a person, I would have its babies.">If your website was a person, I would have its babies. $19.99 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
 
-</div>
+
 
 <div id="personArea">
 <h3 id="fullNameHeader"></h3>
@@ -109,8 +130,6 @@
 	<img class="socialButton" id="Twitter" src="http://www.vjbooks.com/v/vspfiles/assets/images/official%20twitter%20button%20-%20300.png"/>
 	<img class="socialButton" id="Facebook" src="http://web.mit.edu/misti/images/Facebook%20Button.png"/>
 	<img class="socialButton" id="LinkedIn" src="http://www.ldcgasforums.com/Assets/Image/Linkedin_Button(1).jpg"/>
-</div>
-
 </div>
 
 </div>
