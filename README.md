@@ -7,4 +7,4 @@ It's basically just taking the "Rapportive hack" and making it into its own webs
 
 Tech used:
 
-FullContact jQuery plugin to verify email addresses: https://github.com/mattdelliott/fullcontact-api-jquery-plugin
+[FullContact](https://github.com/mattdelliott/fullcontact-api-jquery-plugin) jQuery plugin to verify email addresses
