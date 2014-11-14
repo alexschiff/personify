@@ -123,7 +123,7 @@ $(document).ready(function() {
 
 					$('#email').text('Most likely email: '+top.email);
 
-					$('#console').text('Hacker? Open up the console to see more details.')
+					$('#console').text('Hacker? Open up the console for more details.')
 
 					if (person.hasOwnProperty('socialProfiles') === true) {
 					
