@@ -205,9 +205,17 @@ $(document).ready(function() {
 
 	});
 
+	$('#submitButtonPhone').click(function() {
+		var phone = $('#PhoneSearch').val();
+
+	$.fullcontact.phoneLookup('fdd4a159a9943b57', phone, function(obj) {
+		console.log(JSON.stringify(obj, null, 2));
+	});
+
+	});
+
 	$('#submitButtonEmail').click(function() {
 		var email = $('#EmailSearch').val();
-	
 
 	$.fullcontact.emailLookup('fdd4a159a9943b57', email, function(obj) {
 		console.log(JSON.stringify(obj, null, 2));
